@@ -14,6 +14,7 @@ import { Box } from "@mui/system";
 import { toast } from 'react-toastify';
 import { disableDispatFun, enableDispatFun } from "../../lensprotocol/dispatcher/disable-dispatcher";
 import { useNavigate } from "react-router-dom";
+import NotificationsPopover from "../../Context/NotificationsPopover";
 export default function Header() {
 
   const lensAuthContext = React.useContext(LensAuthContext);
@@ -149,10 +150,12 @@ export default function Header() {
                   </button>
                 </div>
               </form>
+              
               <nav className="menu-bar ml-auto"> 
                 <ul>
                   <li>
-                  <Box sx={{ flexGrow: 0 }}>
+                  <Box sx={{ flexGrow: 0, display:'flex',justifyContent:'space-around' }}>
+                  <NotificationsPopover/>
                   {
                     profile &&
                     <Tooltip title={profile.name ? profile.name : profile.handle}>

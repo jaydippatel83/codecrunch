@@ -29,11 +29,12 @@ export const NotificationContextProvider = (props) => {
       const itemsPerPage = 20;
 
       // fetch the notifications
-      const { count, results } = await api.fetchNotifications(
+      const {  results } = await api.fetchNotifications(
         walletAddress,
         itemsPerPage,
         pageNumber
       ); 
+ 
       // parse all the fetched notifications
       const parsedResponse = utils.parseApiResponse(results);
       setNotificationItems(parsedResponse);

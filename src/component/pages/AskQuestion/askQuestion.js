@@ -18,6 +18,7 @@ import { toast } from 'react-toastify';
 import { Buffer } from 'buffer';
 import { CircularProgress, IconButton, Tooltip } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { NotificationContext } from '../../../Context/Notification';
 
  
   
@@ -40,6 +41,8 @@ const client = create({
 export default function AskQuestion() { 
   const lensAuthContext = React.useContext(LensAuthContext);
     const { profile, login, update, setUpdate } = lensAuthContext;
+    const notificationContext = React.useContext(NotificationContext);
+  const { sendNotifications,fetchNotifications} = notificationContext;
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [tags, setTags] = React.useState([]);
@@ -115,6 +118,14 @@ const handleUpload = async () => {
           } else {
               res = await createPost(postData); 
           } 
+
+          const data = {
+            to: profile.ownedBy,
+            title: "Ask Questions",
+            message:`Your Questions is published!`,
+            cta: "",
+            image:"assets/images/bg.png"
+          };
           if (res) {
               setUpdate(!update);
               setFile("");
@@ -122,6 +133,7 @@ const handleUpload = async () => {
               setTitle("");
               setDescription("");
               setLoading(false);
+              sendNotifications(data)
               toast.success("Post is Successfully created!"); 
           }
       } catch (error) {
@@ -298,7 +310,7 @@ const handleUpload = async () => {
                         <button  
                         onClick={handleUpload}
                         className="btn theme-btn">
-                           { loading ? <CircularProgress size={20} /> :  "Publish your question" }
+                           { loading ? <CircularProgress size={20} color="secondary" /> :  "Publish your question" }
                         </button>
                       </div>
                     </div>

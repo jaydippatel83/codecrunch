@@ -22,12 +22,12 @@ function TopBanner() {
                     <div className="col-lg-9">
                         <div className="hero-content">
                             <h2 className="section-title pb-3 text-white">
-                                Share &amp; grow knowledge with us!
+                               Developer first Q&amp;A platform
                             </h2>
                             <p className="section-desc text-white">
-                                If you are going to use a passage of Lorem Ipsum, you need to be
-                                sure there
-                                <br /> isn't anything embarrassing hidden in the middle of text.
+                            On a mission to make sure developers should gain real value for answering questions, 
+                            <br />   sharing knowledge and open source contributions.
+                               
                             </p>
 
                             <div className="hero-btn-box py-4">
@@ -49,7 +49,7 @@ function TopBanner() {
                                     className="mr-3"
                                 />
                                 <p className="fs-15 text-white lh-20">
-                                    Anybody can ask a question
+                                Ask Questions! Help others by Answering!
                                 </p>
                             </div>
                             <div className="d-flex align-items-center pb-30px">
@@ -58,7 +58,7 @@ function TopBanner() {
                                     alt="question answer icon"
                                     className="mr-3"
                                 />
-                                <p className="fs-15 text-white lh-20">Anybody can answer</p>
+                                <p className="fs-15 text-white lh-20">On chain profile reputation for your skills!</p>
                             </div>
                             <div className="d-flex align-items-center">
                                 <img
@@ -67,7 +67,7 @@ function TopBanner() {
                                     className="mr-3"
                                 />
                                 <p className="fs-15 text-white lh-20">
-                                    The best answers are voted up and rise to the top
+                                Best answers earn "Crypto" rather than "illusionary value of Upvotes"! 😉
                                 </p>
                             </div>
                         </div>

@@ -12,6 +12,8 @@ import { getComments } from '../../../lensprotocol/post/get-post'
 import { createComment, createCommentByDis } from '../../../lensprotocol/post/comments/create-comment'
 import { create } from 'ipfs-http-client'
 import { Buffer } from 'buffer';
+import { NotificationContext } from '../../../Context/Notification'
+import { CircularProgress } from '@mui/material'
  
 const auth =
     "Basic " +
@@ -37,6 +39,9 @@ export default function QuestionDetail() {
   const [loading, setLoading] = useState(false);
   const lensAuthContext = React.useContext(LensAuthContext);
   const { login, loginCreate ,profile} = lensAuthContext;
+  const notificationContext = React.useContext(NotificationContext);
+  const { sendNotifications,fetchNotifications} = notificationContext;
+
   const [update,setUpdate]= useState(false);
 
   const [count, setCount] = useState(0);
@@ -227,7 +232,7 @@ export default function QuestionDetail() {
                     </div>
                     {/* end input-box */}
                     <button className="btn theme-btn theme-btn-sm"  onClick={handleComment}>
-                      Post Your Answer
+                    { loading ? <CircularProgress size={20} color="secondary" /> :  "Post Your Answer" }  
                     </button> 
                 </div>
               </div>
