@@ -22,19 +22,20 @@ export const createComment = async (postData) => {
 
     await postData.login(postData.address);
 
-    const ipfsData = JSON.stringify({
+    const ipfsData = JSON.stringify({ 
       version: '2.0.0',
       metadata_id: uuidv4(),
       description: postData.comment,
       content: postData.comment,
       external_url: null,
       image: null,
+      locale: 'en-US',
       imageMimeType: null,
       name: `Comment by @ ${postData.user}`,
       attributes: [],
       media: [],
-      appId: 'superfun',
       animation_url: null,
+      appId: 'codecrunch', 
     });
     const ipfsResult = await uploadIpfs(ipfsData); 
 
@@ -123,8 +124,8 @@ export const createCommentByDis=async(postData)=>{
   }
 
   const address = await getAddress(); 
-    await postData.login(address); 
-  const ipfsData = JSON.stringify({
+    await postData.login(address);  
+  const ipfsData = JSON.stringify({ 
     version: '2.0.0',
     metadata_id: uuidv4(),
     mainContentFocus: 'TEXT_ONLY',
@@ -137,10 +138,10 @@ export const createCommentByDis=async(postData)=>{
     name: `Comment by @ ${postData.user}`,
     attributes: [], 
     tags:[],
-    appId: 'superfun', 
+    appId: 'codecrunch', 
   });
   const ipfsResult = await uploadIpfs(ipfsData); 
-  
+   
   const createCommentRequest = {
     profileId,
     // remember it has to be indexed and follow metadata standards to be traceable!
@@ -154,7 +155,7 @@ export const createCommentByDis=async(postData)=>{
     },
   };
 
-  const result = await comment(createCommentRequest); 
+  const result = await comment(createCommentRequest);  
  
   const indexedResult = await pollUntilIndexed( result?.data?.createCommentViaDispatcher?.txHash);
  

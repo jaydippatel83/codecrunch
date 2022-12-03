@@ -9,7 +9,24 @@ import { getpublicationById } from '../../../lensprotocol/post/get-publicationBy
 import { toast } from 'react-toastify'
 import AnswerList from './AnswerList'
 import { getComments } from '../../../lensprotocol/post/get-post'
+import { createComment, createCommentByDis } from '../../../lensprotocol/post/comments/create-comment'
+import { create } from 'ipfs-http-client'
+import { Buffer } from 'buffer';
  
+const auth =
+    "Basic " +
+    Buffer.from(
+        process.env.REACT_APP_INFURA_PID + ":" + process.env.REACT_APP_INFURA_SECRET
+    ).toString("base64");
+
+const client = create({
+    host: "ipfs.infura.io",
+    port: 5001,
+    protocol: "https",
+    headers: {
+        authorization: auth,
+    },
+}); 
  
 
 export default function QuestionDetail() {
@@ -19,10 +36,22 @@ export default function QuestionDetail() {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const lensAuthContext = React.useContext(LensAuthContext);
-  const { profile } = lensAuthContext;
+  const { login, loginCreate ,profile} = lensAuthContext;
+  const [update,setUpdate]= useState(false);
+
   const [count, setCount] = useState(0);
   const [fileType, setFileType] = useState("img")
   const [displayCmt, setDisplayCmt] = useState([]);
+  const [file, setFile] = React.useState("");
+  const [comment, setComments] = useState("");
+
+  const handleUploadImage = async (e) => { 
+    const file = e.target.files[0];
+    const ipfsResult = await client.add(file);
+    const imageURI = `https://superfun.infura-ipfs.io/ipfs/${ipfsResult.path}`; 
+    setFile(imageURI);
+  
+  }
 
   async function get_posts() {
       try {
@@ -48,17 +77,85 @@ export default function QuestionDetail() {
     let arr = [];
     const cmt = await getComments(param.id);
     cmt && cmt.map((com) => {
-      let obj = {
-        typename: com?.__typename,
-        avtar: com?.profile?.picture?.original?.url,
-        name: com?.profile?.handle,
-        comment: com?.metadata?.content
-      }
-      arr.push(obj);
+      // let obj = {
+      //   typename: com?.__typename,
+      //   avtar: com?.profile?.picture?.original?.url,
+      //   name: com?.profile?.handle,
+      //   comment: com?.metadata?.content
+      // }
+      arr.push(com);
     })
 
     setDisplayCmt(arr);
   }
+ 
+  const handleComment = async () => {
+    console.log(profile,"profile");
+    if(!profile){
+        toast.error("Please login First!");
+        return;
+    }
+    var pId  ;
+    if(data.__typename === "Comment"){
+        pId = data?.mainPost?.id;
+    } else if(data.__typename === "Mirror"){
+        pId = data?.mirrorOf?.id;
+    } else {
+        pId = data?.id;
+    }
+    console.log(pId,"pId");
+    if(comment.length === 0){
+        toast.error("Please Fill up this field!");
+        return;
+    }
+    try {
+        let arr = [...displayCmt];
+        const id = window.localStorage.getItem("profileId");
+        setLoading(true);
+
+        const obj = {
+            address: profile.ownedBy,
+            comment: comment,
+            login: profile?.dispatcher?.canUseRelay ? login : loginCreate,
+            profileId: id,
+            publishId: pId,
+            image:  file,
+            user: profile.name ? profile.name : profile.handle
+        }
+        var result;
+
+        if (profile?.dispatcher?.canUseRelay) {
+            result = await createCommentByDis(obj);
+        } else {
+            result = await createComment(obj);
+        }
+        if (result) {
+            let obj = {
+                typename: "Comment",
+                avtar: profile?.picture?.original?.url,
+                name: profile?.handle,
+                comment: comment 
+            }
+            arr[arr.length] = obj;
+            setComments("");
+            setDisplayCmt(arr)
+            // setCommUp(!commUp);
+            setLoading(false);
+            setUpdate(!update);
+            
+
+        }
+        setUpdate(!update); 
+        setLoading(false);
+    } catch (error) {
+        toast.error(error);
+        setUpdate(!update);
+        setLoading(false); 
+    }
+}
+
+console.log(data,"data");
+
 
   return (
     <>  
@@ -82,7 +179,13 @@ export default function QuestionDetail() {
                 </div>
                 {/* end subheader */}
                {
-                displayCmt.length != 0 ?  <AnswerList data={displayCmt}/> : <p>No answer available</p>
+                displayCmt.length != 0 ?  
+                displayCmt.map((cmt)=>{
+                  return (
+                    <AnswerList data={cmt}/>
+                  )
+                })
+                 : <p>No answer available</p>
                } 
                 {/* end answer-wrap */}
                 <div className="subheader">
@@ -92,17 +195,17 @@ export default function QuestionDetail() {
                   {/* end subheader-title */}
                 </div>
                 {/* end subheader */}
-                <div className="post-form">
-                  <form method="post" className="pt-3">
+                <div className="post-form"> 
                     <div className="input-box">
                       <label className="fs-14 text-black lh-20 fw-medium">
                         Body
                       </label>
                       <div className="form-group">
                         <textarea
-                          className="form-control form--control form-control-sm fs-13 user-text-editor"
+                          className="form-control form--control form-control-sm fs-13 "
                           name="message"
                           rows={6}
+                          onChange={(e)=>setComments(e.target.value)}
                           placeholder="Your answer here..."
                           defaultValue={"Your answer here..."}
                         />
@@ -116,7 +219,7 @@ export default function QuestionDetail() {
                             type="file"
                             name="files[]"
                             className="file-upload-input"
-                            multiple=""
+                            onChange={(e)=>handleUploadImage(e)}
                           />
                           <span className="file-upload-text d-flex align-items-center justify-content-center">
                             <i className="la la-cloud-upload mr-2 fs-24" />
@@ -126,10 +229,9 @@ export default function QuestionDetail() {
                       </div>
                     </div>
                     {/* end input-box */}
-                    <button className="btn theme-btn theme-btn-sm" type="submit">
+                    <button className="btn theme-btn theme-btn-sm"  onClick={handleComment}>
                       Post Your Answer
-                    </button>
-                  </form>
+                    </button> 
                 </div>
               </div>
               {/* end question-main-bar */}

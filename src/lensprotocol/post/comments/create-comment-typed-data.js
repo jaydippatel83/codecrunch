@@ -67,7 +67,7 @@ mutation  ($request:CreatePublicCommentRequest!){
 } 
 `
 
-export const createGasLessComment = (createGasless) => {
+export const createGasLessComment = (createGasless) => { 
   return apolloClient.mutate({
     mutation: gql(CREATE_GASLESS_COMMENT),
     variables: {
@@ -78,7 +78,7 @@ export const createGasLessComment = (createGasless) => {
 
 export const comment = async (createCommentRequest) => {
   const profileId = window.localStorage.getItem("profileId");
-  const profileResult = await getProfileById(profileId);
+  const profileResult = await getProfileById(profileId); 
   if (!profileResult) {
     toast.error('Could not find profile');
     return;
@@ -87,10 +87,10 @@ export const comment = async (createCommentRequest) => {
 
   // this means it they have not setup the dispatcher, if its a no you must use broadcast
   if (profileResult.dispatcher?.canUseRelay) {
-    const dispatcherResult = await createGasLessComment(createCommentRequest); 
-
+    const dispatcherResult = await createGasLessComment(createCommentRequest);  
     if (dispatcherResult?.data?.createCommentViaDispatcher?.__typename !== 'RelayerResult') { 
       toast.error('create comment via dispatcher: failed');
+      
     }
 
     return dispatcherResult;

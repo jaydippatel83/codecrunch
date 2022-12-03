@@ -4,8 +4,7 @@ import { LensAuthContext } from '../../../Context/MainContext';
 import { addReaction, getReactions, removeReaction } from '../../../lensprotocol/reactions/add-reaction';
 import UserInfo from './UserInfo'
 
-function AnswerList({data}) {
-    console.log(data,"data");
+function AnswerList({data}) { 
 
     const lensAuthContext = React.useContext(LensAuthContext);
     const { profile, login } = lensAuthContext;
@@ -18,6 +17,9 @@ function AnswerList({data}) {
     useEffect(() => {
         getReact();
     }, [pid, update])
+
+
+    console.log(data,"data");
 
  
     

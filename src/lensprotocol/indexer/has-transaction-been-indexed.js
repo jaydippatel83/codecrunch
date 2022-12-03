@@ -95,6 +95,7 @@ const sleep = (milliseconds) => {
 };
 
 export const pollUntilIndexed = async (txHash) => {
+  console.log(txHash,"txHash");
   // eslint-disable-next-line no-constant-condition
   while (true) {
     const result = await hasTxBeenIndexed(txHash); 

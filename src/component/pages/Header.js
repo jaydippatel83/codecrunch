@@ -39,15 +39,14 @@ export default function Header() {
   const handleNavigate = (id) => {
     navigate(`/profile/${id}`)
     setSearchData("");
-  }
-
+  } 
 
   const navigateToHome = () => {
     navigate('/');
   }
 
-  const handleClickNavigate = (path) => {
-    // navigate(`/${path}`);
+  const handleNavigateMessage = () => {
+    navigate('/messages');
   }
 
 
@@ -98,7 +97,7 @@ export default function Header() {
           <div className="col-lg-2">
             <div className="logo-box">
               <a onClick={navigateToHome} className="logo">
-                <img src="assets/images/logo-black.png" alt="logo" />
+                <img width="200px" src="https://superfun.infura-ipfs.io/ipfs/QmW7DVssAboAGp6WdMEb19mkKH6VMZGvAm5fDyo739YKnF" alt="logo" />
               </a>
               <div className="user-action">
                 <div
@@ -120,27 +119,21 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <div className="col-lg-10">
+          <div className="col-lg-10 ">
             <div className="menu-wrapper border-left border-left-gray pl-4 justify-content-end">
-              <nav className="menu-bar mr-auto">
+              <nav className="menu-bar ">
                 <ul>
                   <li>
-                    <a href="#">
+                    <a  onClick={navigateToHome}>
                       Home
                     </a>
                   </li>
                   <li className="is-mega-menu">
-                    <a href="#">
-                      pages <i className="la la-angle-down fs-11" />
+                    <a  onClick={handleNavigateMessage}>
+                      messages  
                     </a>
 
-                  </li>
-                  <li>
-                    <a href="#">
-                      blog <i className="la la-angle-down fs-11" />
-                    </a>
-
-                  </li>
+                  </li> 
                 </ul>
               </nav>
               <form method="post" className="mr-4">
@@ -156,7 +149,7 @@ export default function Header() {
                   </button>
                 </div>
               </form>
-              <nav className="menu-bar mr-auto"> 
+              <nav className="menu-bar ml-auto"> 
                 <ul>
                   <li>
                   <Box sx={{ flexGrow: 0 }}>
