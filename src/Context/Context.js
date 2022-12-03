@@ -27,7 +27,7 @@ export const CodesterContextProvider = (props) => {
 
                 },
                 recipients: recipient, // recipient address
-                channel: '0xE9B4b5985fa998516A58D9449Fe53048f0Dd33aB', // your channel address
+                channel: '0x11DfA2f073D303bAD0295df27a0F748290D39C5E', // your channel address
                 env: 'staging'
             });
             console.log(apiResponse, 'api response');

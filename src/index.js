@@ -8,6 +8,7 @@ import { CodesterContextProvider } from './Context/Context';
 import { LensAuthContextProvider } from './Context/MainContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { NotificationContextProvider } from './Context/Notification';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,10 +17,12 @@ root.render(
   <React.StrictMode>
     <LensAuthContextProvider>
       <CodesterContextProvider>
+      <NotificationContextProvider>
       <ToastContainer />
         <StyledEngineProvider injectFirst> 
           <App />
         </StyledEngineProvider>
+        </NotificationContextProvider>
       </CodesterContextProvider>
     </LensAuthContextProvider>
   </React.StrictMode>

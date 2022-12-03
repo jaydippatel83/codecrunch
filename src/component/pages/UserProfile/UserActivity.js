@@ -1,56 +1,18 @@
+import { FormControl, InputLabel, Select } from "@mui/material";
 import React from "react";
-import FormControl from '@material-ui/core/FormControl';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import InputBase from '@material-ui/core/InputBase';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
+// import FormControl from '@material-ui/core/FormControl';
+// import NativeSelect from '@material-ui/core/NativeSelect';
+// import InputBase from '@material-ui/core/InputBase';
+// import InputLabel from '@material-ui/core/InputLabel';
+// import Select from '@material-ui/core/Select';
 
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+// import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 
 
-const BootstrapInput = withStyles((theme) => ({
-  root: {
-    'label + &': {
-      marginTop: theme.spacing(3),
-    },
-  },
-  input: {
-    borderRadius: 4,
-    position: 'relative',
-    backgroundColor: theme.palette.background.paper,
-    border: '1px solid #ced4da',
-    fontSize: 16,
-    padding: '10px 26px 10px 12px',
-    transition: theme.transitions.create(['border-color', 'box-shadow']),
-    // Use the system font instead of the default Roboto font.
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-    '&:focus': {
-      borderRadius: 4,
-      borderColor: '#80bdff',
-      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-    },
-  },
-}))(InputBase);
-
-const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-}));
+ 
 function UserActivity() {
-  const classes = useStyles();
+   
   const [age, setAge] = React.useState('');
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -231,7 +193,7 @@ function UserActivity() {
               <h4 className="fs-15 fw-regular">
                 Answers <span>(1,979)</span>
               </h4>
-              <FormControl variant="outlined" size="small" className={classes.formControl}>
+              <FormControl variant="outlined" size="small"  >
                 <InputLabel htmlFor="outlined-age-native-simple">Order by</InputLabel>
                 <Select style={{ paddingRight: "24px" }}
                   native
@@ -369,7 +331,7 @@ function UserActivity() {
             <h3 className="fs-17">
               Questions <span>(50)</span>
             </h3>
-            <FormControl variant="outlined" size="small" className={classes.formControl}>
+            <FormControl variant="outlined" size="small" >
                 <InputLabel htmlFor="outlined-age-native-simple">Order by</InputLabel>
                 <Select style={{ paddingRight: "24px" }}
                   native
@@ -609,7 +571,7 @@ function UserActivity() {
             <h3 className="fs-17">
               Badges <span>(765)</span>
             </h3>
-            <FormControl variant="outlined" size="small" className={classes.formControl}>
+            <FormControl variant="outlined" size="small" >
                 <InputLabel htmlFor="outlined-age-native-simple">Order by</InputLabel>
                 <Select style={{ paddingRight: "24px" }}
                   native
@@ -681,7 +643,7 @@ function UserActivity() {
             <h3 className="fs-17">
               Bookmarks <span>(12)</span>
             </h3>
-            <FormControl variant="outlined" size="small" className={classes.formControl}>
+            <FormControl variant="outlined" size="small" >
                 <InputLabel htmlFor="outlined-age-native-simple">Order by</InputLabel>
                 <Select style={{ paddingRight: "24px" }}
                   native
@@ -805,7 +767,7 @@ function UserActivity() {
               Active bounties <span>(20)</span>
             </h3>
             <div className="filter-option-box flex-grow-1 d-flex align-items-center justify-content-end lh-1">
-              <FormControl variant="outlined" size="small" className={classes.formControl}>
+              <FormControl variant="outlined" size="small" >
                 <InputLabel htmlFor="outlined-age-native-simple">Order by</InputLabel>
                 <Select style={{ paddingRight: "24px" }}
                   native

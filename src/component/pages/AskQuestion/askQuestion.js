@@ -4,12 +4,7 @@ import Footer from '../Footer';
 import Header from '../Header';
 import RightNav from './RightNav';
 import SvgImg from './Svg';
-import FormControl from '@material-ui/core/FormControl';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import InputBase from '@material-ui/core/InputBase';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select'; 
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+ 
 import { AbortedDeferredError } from 'react-router-dom';
 import * as PushAPI from "@pushprotocol/restapi";
 import * as ethers from "ethers";
@@ -25,11 +20,7 @@ import { CircularProgress, IconButton, Tooltip } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 
  
-  const useStyles = makeStyles((theme) => ({
-    margin: {
-      margin: theme.spacing(1),
-    },
-  }));
+  
 
   const auth =
     "Basic " +
@@ -55,8 +46,7 @@ export default function AskQuestion() {
   const [file, setFile] = React.useState("");
   const [loading, setLoading] = React.useState(false);
  
-
-  const classes = useStyles();
+ 
   const [age, setAge] = React.useState('');
   const handleChange = (event) => {
     setAge(event.target.value);
