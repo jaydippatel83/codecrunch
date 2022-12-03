@@ -17,8 +17,7 @@ export default function UserProfile() {
   const [data, setData] = useState(); 
   const [followerCount, setFollowerCount] = useState(0);
   const [followingCount, setFollowingCount] = React.useState(0);
-
-  console.log(data, "params");
+ 
 
   useEffect(() => {
     getProfile();

@@ -8,6 +8,7 @@ import { posts } from "../lensprotocol/post/get-post";
 import { getPublicationByLatest } from "../lensprotocol/post/explore/explore-publications";
 import { toast } from "react-toastify";
 import { profileByAddress } from "../lensprotocol/profile/get-profile";
+import { useNavigate } from "react-router-dom";
 
 export const LensAuthContext = createContext(undefined); 
 export const LensAuthContextProvider = (props) => { 
@@ -18,6 +19,7 @@ export const LensAuthContextProvider = (props) => {
   const [userPosts, setUserPosts] = useState([]); 
   const id = window.localStorage.getItem("profileId");
   const [updatePro,setUpdatePro]= useState(false)
+   
  
 
   useEffect(() => {
@@ -145,18 +147,16 @@ export const LensAuthContextProvider = (props) => {
     window.localStorage.removeItem("accessToken");
     window.localStorage.removeItem("refreshToken");
     window.localStorage.removeItem("profileId");
-    setUpdate(!update)
+    setUpdate(!update) 
     window.location.reload();
 
   }
 
 
 
-  const login = async () => { 
-    console.log("calll");
+  const login = async () => {  
     try {
-      const address = await getAddress();
-      console.log(address,"address");
+      const address = await getAddress(); 
       setUserAdd(address);
       const isTokenValid = await refresh();
       if (isTokenValid) {

@@ -54,11 +54,7 @@ export default function AskQuestion() {
   const [tags, setTags] = React.useState([]);
   const [file, setFile] = React.useState("");
   const [loading, setLoading] = React.useState(false);
-
-  console.log(title,"title");
-  console.log(description,"description");
-  console.log(tags,"tags");
-
+ 
 
   const classes = useStyles();
   const [age, setAge] = React.useState('');
@@ -85,8 +81,7 @@ const removeTags = index => {
  const handleUploadImage = async (e) => { 
   const file = e.target.files[0];
   const ipfsResult = await client.add(file);
-  const imageURI = `https://superfun.infura-ipfs.io/ipfs/${ipfsResult.path}`;
-  console.log(imageURI,"imageURI");
+  const imageURI = `https://superfun.infura-ipfs.io/ipfs/${ipfsResult.path}`; 
   setFile(imageURI);
 
 }

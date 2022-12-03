@@ -63,8 +63,7 @@ function HomeQuestionCard({item,i}) {
         }
         setCount(res.items.length);
     }
-
-    console.log(item,"item");
+ 
  
 
     return (
@@ -104,8 +103,7 @@ function HomeQuestionCard({item,i}) {
 
                         <div className="tags">
                             {
-                                item && item?.metadata?.tags?.map((e, i) => {
-                                    console.log(e, "e");
+                                item && item?.metadata?.tags?.map((e, i) => { 
                                     return (
                                         <a key={i} c className="tag-link">
                                             {e}
