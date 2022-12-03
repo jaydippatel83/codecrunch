@@ -9,8 +9,7 @@ const signer = new ethers.Wallet(Pkey);
 export const CodesterContext = createContext();
 
 export const CodesterContextProvider = (props) => { 
-    const sendNotification = async (type,title,msg,recipient) => {
-      console.log('send notification called...');
+    const sendNotification = async (type,title,msg,recipient) => { 
         try {
             const apiResponse = await PushAPI.payloads.sendNotification({
                 signer,

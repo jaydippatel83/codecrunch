@@ -121,7 +121,7 @@ export default function Header() {
           </div>
           <div className="col-lg-10 ">
             <div className="menu-wrapper border-left border-left-gray pl-4 justify-content-end">
-              <nav className="menu-bar ">
+              <nav className="menu-bar ml-auto">
                 <ul>
                   <li>
                     <a  onClick={navigateToHome}>

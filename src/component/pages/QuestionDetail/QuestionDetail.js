@@ -89,8 +89,7 @@ export default function QuestionDetail() {
     setDisplayCmt(arr);
   }
  
-  const handleComment = async () => {
-    console.log(profile,"profile");
+  const handleComment = async () => { 
     if(!profile){
         toast.error("Please login First!");
         return;
@@ -102,8 +101,7 @@ export default function QuestionDetail() {
         pId = data?.mirrorOf?.id;
     } else {
         pId = data?.id;
-    }
-    console.log(pId,"pId");
+    } 
     if(comment.length === 0){
         toast.error("Please Fill up this field!");
         return;
@@ -153,8 +151,7 @@ export default function QuestionDetail() {
         setLoading(false); 
     }
 }
-
-console.log(data,"data");
+ 
 
 
   return (

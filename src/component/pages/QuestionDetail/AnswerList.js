@@ -17,9 +17,7 @@ function AnswerList({data}) {
     useEffect(() => {
         getReact();
     }, [pid, update])
-
-
-    console.log(data,"data");
+ 
 
  
     
