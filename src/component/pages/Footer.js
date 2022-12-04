@@ -100,11 +100,11 @@ function Footer (){
           />
         </a>
       </div>
-      <div className="col-lg-6">
+      {/* <div className="col-lg-6">
         <p className="copyright-desc text-right fs-14">
           Copyright © 2022 <a href="#">CodeSter</a>
         </p>
-      </div>
+      </div> */}
     </div>
   </div>
 </section>

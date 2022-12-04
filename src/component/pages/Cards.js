@@ -6,7 +6,7 @@ function Cards (){
         <div className="container">
           <div className="text-center">
             <h2 className="section-title">
-              Disilab Q&amp;A communities are different. <br /> Here's how
+              CodeCrunch Q&amp;A communities are different. <br /> Here's how
             </h2>
           </div>
           <div className="row pt-50px">

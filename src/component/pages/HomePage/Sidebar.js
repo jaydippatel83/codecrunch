@@ -27,60 +27,45 @@ function Sidebar() {
                 </a>
               </li>
               <li className="lh-26">
-                <a href="category.html">
-                  <i className="la la-flask mr-1 text-black" /> Science
+                <a >
+                  <i className="la la-flask mr-1 text-black" /> Solidity
                 </a>
               </li>
               <li className="lh-26">
-                <a href="category.html">
-                  <i className="la la-pencil mr-1 text-black" /> Math
+                <a >
+                  <i className="la la-pencil mr-1 text-black" /> Rust
                 </a>
               </li>
               <li className="lh-26">
-                <a href="category.html">
-                  <i className="la la-globe mr-1 text-black" /> History
+                <a >
+                  <i className="la la-globe mr-1 text-black" /> Cairo
                 </a>
               </li>
               <li className="lh-26">
-                <a href="category.html">
-                  <i className="la la-book-open mr-1 text-black" /> Literature
+                <a >
+                  <i className="la la-book-open mr-1 text-black" /> ReactJs
                 </a>
               </li>
               <li className="lh-26">
-                <a href="category.html">
-                  <i className="la la-laptop mr-1 text-black" /> Technology
+                <a >
+                  <i className="la la-laptop mr-1 text-black" /> NodeJs
                 </a>
               </li>
               <li className="lh-26">
-                <a href="category.html">
-                  <i className="la la-dumbbell mr-1 text-black" /> Health
+                <a >
+                  <i className="la la-dumbbell mr-1 text-black" /> Go
                 </a>
               </li>
               <li className="lh-26">
-                <a href="category.html">
-                  <i className="la la-gavel mr-1 text-black" /> Law
+                <a >
+                  <i className="la la-gavel mr-1 text-black" /> Polkadot
                 </a>
               </li>
               <li className="lh-26">
-                <a href="category.html">
-                  <i className="la la-briefcase mr-1 text-black" /> Business
+                <a >
+                  <i className="la la-briefcase mr-1 text-black" /> Cosmos
                 </a>
-              </li>
-              <li className="lh-26">
-                <a href="category.html">
-                  <i className="la la-file-text mr-1 text-black" /> All Topics
-                </a>
-              </li>
-              <li className="lh-26">
-                <a href="category.html">
-                  <i className="la la-puzzle-piece mr-1 text-black" /> Random
-                </a>
-              </li>
-              <li className="lh-26">
-                <a href="category.html">
-                  <i className="la la-check mr-1 text-black" /> Unanswered
-                </a>
-              </li>
+              </li> 
             </ul>
           </div>
           {/* end sidebar */}

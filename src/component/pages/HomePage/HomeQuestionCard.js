@@ -96,8 +96,8 @@ function HomeQuestionCard({item,i}) {
                         <small className="meta">
 
                             <span className="pr-1">{moment(item?.createdAt, "YYYYMMDD").fromNow()}</span>
-                            <a href="user-profile.html" className="author">
-                                edublog
+                            <a   className="author">
+                                 By {item?.profile?.handle}
                             </a>
                         </small>
 
