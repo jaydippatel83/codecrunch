@@ -20,9 +20,9 @@ function HomeQuestionCard({item,i}) {
     }
 
 
-    useEffect(() => {
-        getReact();
-    }, [pid, update])
+    // useEffect(() => {
+    //     getReact();
+    // }, [ update])
 
  
     

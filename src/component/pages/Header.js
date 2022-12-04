@@ -89,6 +89,8 @@ export default function Header() {
     }
   }
 
+  
+
 
 
   return (
@@ -214,29 +216,30 @@ export default function Header() {
                       !profile && <Button className='m-2' style={{ textDecoration: "none", background: "aliceblue", textTransform: 'capitalize' }} onClick={login}>
                         Login
                       </Button>
-                      //    <div className="nav-right-button">
-                      //   <a
-                      //     style={{ textDecoration: "none", background: "aliceblue" ,textTransform: 'capitalize'}}
-                      //     href="#"
-                      //     className="btn theme-btn theme-btn-outline mr-2"
-                      //     data-toggle="modal"
-                      //     data-target="#loginModal"
-                      //   >
-                      //     <i style={{ color: 'blue' }} className="la la-sign-in mr-1" /> {domain}
-                      //   </a>
-                      // </div> 
-                    } 
+}
+                         {/* <div className="nav-right-button">
+                        <a
+                          style={{ textDecoration: "none", background: "aliceblue" ,textTransform: 'capitalize'}}
+                          href="#"
+                          className="btn theme-btn theme-btn-outline mr-2"
+                          data-toggle="modal"
+                          data-target="#loginModal"
+                        >
+                          <i style={{ color: 'blue' }} className="la la-sign-in mr-1" /> {domain}
+                        </a>
+                      </div>  */}
+                    
                      
-                    {/* <ul style={{ width: '267px' }} className="dropdown-menu-item">
-                      <li  >  */}
-                    {/* </li>
+                    <ul style={{ width: '267px' }} className="dropdown-menu-item">
+                      {/* <li  > 
+                    </li>
                       <li onClick={requestAccount} >
                         <a style={{ fontWeight: "600", marginBottom: '12px', wordSpacing: '3px', letterSpacing: '1px', fontSize: '18px' }}>Login with ENS</a>
-                      </li>
+                      </li> */}
                       <li>
                         <WorldCoin />
                       </li>
-                    </ul> */}
+                    </ul>
                   </li>
                 </ul>
               </nav>
