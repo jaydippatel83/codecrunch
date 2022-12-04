@@ -91,7 +91,7 @@ function Sidebar() {
                   aria-controls="questions"
                   aria-selected="true"
                 >
-                  Questions
+                 My Questions
                 </a>
               </li>
               <li className="nav-item">
