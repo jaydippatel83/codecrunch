@@ -15,7 +15,7 @@ function AnswerList({data}) {
     const [update, setUpdate] = useState(false); 
     
     useEffect(() => {
-        getReact();
+        // getReact();
     }, [pid, update])
  
 
