@@ -23,6 +23,7 @@ import { LensAuthContext } from '../../../Context/MainContext';
 import { getPublicationByLatest } from '../../../lensprotocol/post/explore/explore-publications';
 import TopBanner from './TopBanner';
 import Sidebar from './Sidebar';
+import PushChat from './PushChat';
 
 export default function Home() { 
 
@@ -39,6 +40,7 @@ export default function Home() {
           >
             <i className="la la-arrow-up" />
           </div> 
+          <PushChat/>
       </div> 
   )
 }

@@ -15,6 +15,7 @@ import { toast } from 'react-toastify';
 import { disableDispatFun, enableDispatFun } from "../../lensprotocol/dispatcher/disable-dispatcher";
 import { useNavigate } from "react-router-dom";
 import NotificationsPopover from "../../Context/NotificationsPopover";
+import PushChat from "./HomePage/PushChat";
 export default function Header() {
 
   const lensAuthContext = React.useContext(LensAuthContext);
@@ -47,7 +48,7 @@ export default function Header() {
   }
 
   const handleNavigateMessage = () => {
-    navigate('/messages');
+    // navigate('/messages');
   }
 
 
@@ -155,6 +156,7 @@ export default function Header() {
                 <ul>
                   <li>
                   <Box sx={{ flexGrow: 0, display:'flex',justifyContent:'space-around' }}>
+                    
                   <NotificationsPopover/>
                   {
                     profile &&

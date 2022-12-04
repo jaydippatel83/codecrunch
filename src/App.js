@@ -8,6 +8,7 @@ import WorldCoin from './component/pages/WorldCoinLogin';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './component/pages/Header';
 import Footer from './component/pages/Footer';
+import PushChat from './component/pages/HomePage/PushChat';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/ask" element={<AskQuestion />} />
           <Route path="/question/:id" element={<QuestionDetail />} />
           <Route path="/profile/:id" element={<UserProfile />} />
+          {/* <Route path="/messages" element={<PushChat />} /> */}
         </Routes>
         <Footer />
       </BrowserRouter>
